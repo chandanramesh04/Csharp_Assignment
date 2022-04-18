@@ -1,0 +1,53 @@
+using System;
+
+
+
+class SystemArray
+{
+    public static void Main()
+    {
+       int[] OriginalArray=new int[]{1,2,3,4,5}; 
+       int[] CopyArray=new int[OriginalArray.Length];
+
+          Array.Copy(OriginalArray,0,CopyArray,0,OriginalArray.Length); 
+
+           Console.WriteLine("Original array :");
+            foreach(int original in OriginalArray)
+               {
+                   Console.WriteLine(original);
+               }
+
+             Console.WriteLine("Copied array :");
+             foreach(int copy in copyArray)
+               {
+                   Console.WriteLine(copy);
+               }
+
+
+                 Array.Sort(OriginalArray);
+                 Console.WriteLine("Sorted array :");
+                 foreach(int sortedData in OriginalArray)
+               {
+                   Console.WriteLine(sortedData);
+               }
+
+                  Array.Reverse(OriginalArray);
+                 Console.WriteLine("Reverse array :");
+                 foreach(int reverseData in OriginalArray)
+               {
+                   Console.WriteLine(reverseData);
+               }
+
+                   Array.Clear(OriginalArray,0,2);  
+                   Console.WriteLine("Cleared array :");
+
+                     foreach(int data in OriginalArray)
+                    {
+                       Console.WriteLine(data);
+                    }
+                    Console.ReadKey();
+
+    }
+  
+  
+}
