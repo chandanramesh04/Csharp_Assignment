@@ -1,0 +1,209 @@
+a)
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Delegate_Program
+{
+    public delegate void EmployeeDelegate();
+    public class DelegateClass
+    {
+
+        static void Main(string[] args)
+        {
+            Manager m = new Manager();
+
+
+            EmployeeDelegate e = new EmployeeDelegate(m.Display);
+            e += m.ExecutiveDisplay;
+
+
+            e.Invoke();
+
+
+        }
+    }
+    public class Manager
+    {
+        private int manager_Id, markEx_Id;
+        private string manager_Name, markEx_Name;
+        private string company_Name, markEx_CompanyName;
+
+
+
+        public MarketingExecutive()
+        {
+            Console.Write("Enter the Manager id : ");
+            this.manager_Id = (Convert.ToInt32(Console.ReadLine()));
+            Console.Write("Enter the Manager name : ");
+            this.manager_Name = Console.ReadLine();
+
+            Console.Write("Enter the Company Name : ");
+            this.company_Name = Console.ReadLine();
+
+            Console.Write("Enter the MarketingExecutive id : ");
+            this.markEx_Id = (Convert.ToInt32(Console.ReadLine()));
+
+            Console.Write("Enter the MarketingExecutive name : ");
+            this.markEx_Name = Console.ReadLine();
+
+            Console.Write("Enter the MarketingExecutive Company Name : ");
+            this.markEx_CompanyName = Console.ReadLine();
+
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("Employee Details :");
+            Console.WriteLine("Employee Id : {0}", manager_Id);
+            Console.WriteLine("Employee Name : {0}", manager_Name);
+            Console.WriteLine("Employee Company Name : {0}", company_Name);
+        }
+
+        public void ExecutiveDisplay()
+        {
+            Console.WriteLine("MarketingExecutiveDetails : ");
+            Console.WriteLine("MarketingExecutive Manager Id : {0}", markEx_Id);
+            Console.WriteLine("MarketingExecutive Manager Name : {0}", markEx_Name);
+            Console.WriteLine("MarketingExecutive Manager Company Name : {0}", markEx_CompanyName);
+        }
+
+    }
+}
+
+
+
+
+
+b)
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Delegate_Program
+{
+    public delegate void EmployeeDelegateTwo(); 
+  
+    public class Manager
+    {
+        private int managerId;
+        private string managerName;
+        private string companyName;
+
+
+        public Manager()
+        {
+            Console.Write("Enter the manager id : ");
+            this.managerId = (Convert.ToInt32(Console.ReadLine()));
+            Console.Write("Enter the manager name : ");
+            this.managerName = Console.ReadLine();
+
+            Console.Write("Enter the Company Name : ");
+            this.companyName = Console.ReadLine();
+
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("Manager Id : {0}", managerId);
+            Console.WriteLine("Manager Name : {0}", managerName);
+            Console.WriteLine("Manager Company Name : {0}", companyName);
+        }
+    }
+}
+
+
+
+
+c)
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Banking
+{
+    
+    public class Account
+    {
+        public int AccountNumber;
+        public string CustomerName;
+        public double Balance;
+
+        public Account(int AccountNumber,String CustomerName,double Balance)
+        {
+            this.AccountNumber = AccountNumber;
+            this.CustomerName = CustomerName;   
+            this.Balance = Balance; 
+        }
+       
+
+        public void Withdraw(double amount)
+        {
+            Console.WriteLine("Enter amount");
+            Console.ReadLine();
+
+
+            if (this.Balance>100)
+            {
+                if(amount == 100 || amount == 500 || amount == 1000)
+                {
+                    Console.WriteLine(Balance + " : Rs is your Savings,Please choose Account to withdraw");
+                    Console.Read();
+                    Console.WriteLine("Your transaction is being processed");
+                    double FinalBalance = Balance - amount;
+                    Console.WriteLine("Final Balance after deduction : Rs.{0}",FinalBalance);
+                }
+                else
+                {
+                    Console.WriteLine("Transaction Error");
+                }
+                          
+            }
+            else if(Balance < 500)
+            {
+                Console.WriteLine("Your balance is less than 500rs sorry we cannot proceed");
+            }
+            else
+            {
+                Console.WriteLine("Your Session has been Expired!!");
+            }
+            
+        }
+        public void Deposit(double Money)
+        {
+            Console.WriteLine("Enter the amount you want to deposit ");
+            Console.Read();
+            if(Money >= 100)
+            {
+                Console.WriteLine("Your Money has been Deposited !");
+                double d = Balance + Money;
+                Console.WriteLine("Current Balance {0}",d);
+            }
+            else if(Money < 100)  
+            {
+                Console.WriteLine("Minimum deposit amount is Rs.100");
+            }
+            else
+            {
+                Console.WriteLine("Data not Valid !");
+            }
+        }
+    }
+    internal class WithdrawDeposit
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Banking Domain Application :");
+            Account a = new Account(12345,"David",30000);
+            a.Withdraw(500);
+               Console.ReadKey();
+        }
+    }
+}
